@@ -1,0 +1,205 @@
+{
+  "policy_defaults": {
+    "clinic_timezone": "Asia/Singapore",
+    "channel": "sms",
+    "max_contact_attempts": 3,
+    "sending_window_start_hour": 8,
+    "sending_window_end_hour": 20
+  },
+  "cases": [
+    {
+      "case_id": "eligible_overdue",
+      "evaluated_at": "2030-01-15T09:00:00+08:00",
+      "patient": {
+        "patient_id": "P001",
+        "consent": {"channel": "sms", "granted": true, "expires_at": null},
+        "contact": {"channel": "sms", "is_valid": true}
+      },
+      "episode": {
+        "episode_id": "E001",
+        "clinical_status": "CLINICIAN_RECORDED_OPEN",
+        "source_record_version": 1
+      },
+      "requirement": {
+        "follow_up_id": "F001",
+        "episode_id": "E001",
+        "state": "OPEN",
+        "approved_due_date": "2030-01-10",
+        "source_record_version": 2,
+        "source_records_current": true,
+        "instructions_consistent": true
+      },
+      "appointments": [],
+      "task": {
+        "contact_attempts": 0,
+        "next_permitted_contact_at": null,
+        "has_pending_approval": false,
+        "has_unresolved_escalation": false
+      }
+    },
+    {
+      "case_id": "due_today_not_overdue",
+      "evaluated_at": "2030-01-15T09:00:00+08:00",
+      "patient": {
+        "patient_id": "P002",
+        "consent": {"channel": "sms", "granted": true, "expires_at": null},
+        "contact": {"channel": "sms", "is_valid": true}
+      },
+      "episode": {
+        "episode_id": "E002",
+        "clinical_status": "CLINICIAN_RECORDED_OPEN",
+        "source_record_version": 1
+      },
+      "requirement": {
+        "follow_up_id": "F002",
+        "episode_id": "E002",
+        "state": "OPEN",
+        "approved_due_date": "2030-01-15",
+        "source_record_version": 1,
+        "source_records_current": true,
+        "instructions_consistent": true
+      },
+      "appointments": [],
+      "task": {
+        "contact_attempts": 0,
+        "next_permitted_contact_at": null,
+        "has_pending_approval": false,
+        "has_unresolved_escalation": false
+      }
+    },
+    {
+      "case_id": "unrelated_appointment_does_not_cover",
+      "evaluated_at": "2030-01-15T10:00:00+08:00",
+      "patient": {
+        "patient_id": "P003",
+        "consent": {"channel": "sms", "granted": true, "expires_at": null},
+        "contact": {"channel": "sms", "is_valid": true}
+      },
+      "episode": {
+        "episode_id": "E003-CLEANING",
+        "clinical_status": "CLINICIAN_RECORDED_OPEN",
+        "source_record_version": 2
+      },
+      "requirement": {
+        "follow_up_id": "F003-CLEANING",
+        "episode_id": "E003-CLEANING",
+        "state": "OPEN",
+        "approved_due_date": "2030-01-01",
+        "source_record_version": 3,
+        "source_records_current": true,
+        "instructions_consistent": true
+      },
+      "appointments": [
+        {
+          "appointment_id": "A003",
+          "starts_at": "2030-01-20T10:00:00+08:00",
+          "status": "CONFIRMED",
+          "covered_follow_up_ids": ["F003-IMPLANT"]
+        }
+      ],
+      "task": {
+        "contact_attempts": 1,
+        "next_permitted_contact_at": null,
+        "has_pending_approval": false,
+        "has_unresolved_escalation": false
+      }
+    },
+    {
+      "case_id": "covering_appointment_blocks",
+      "evaluated_at": "2030-01-15T10:00:00+08:00",
+      "patient": {
+        "patient_id": "P004",
+        "consent": {"channel": "sms", "granted": true, "expires_at": null},
+        "contact": {"channel": "sms", "is_valid": true}
+      },
+      "episode": {
+        "episode_id": "E004",
+        "clinical_status": "CLINICIAN_RECORDED_OPEN",
+        "source_record_version": 3
+      },
+      "requirement": {
+        "follow_up_id": "F004",
+        "episode_id": "E004",
+        "state": "OPEN",
+        "approved_due_date": "2030-01-01",
+        "source_record_version": 5,
+        "source_records_current": true,
+        "instructions_consistent": true
+      },
+      "appointments": [
+        {
+          "appointment_id": "A004",
+          "starts_at": "2030-01-20T10:00:00+08:00",
+          "status": "CONFIRMED",
+          "covered_follow_up_ids": ["F004"]
+        }
+      ],
+      "task": {
+        "contact_attempts": 0,
+        "next_permitted_contact_at": null,
+        "has_pending_approval": false,
+        "has_unresolved_escalation": false
+      }
+    },
+    {
+      "case_id": "withdrawn_consent",
+      "evaluated_at": "2030-01-15T11:00:00+08:00",
+      "patient": {
+        "patient_id": "P005",
+        "consent": {"channel": "sms", "granted": false, "expires_at": null},
+        "contact": {"channel": "sms", "is_valid": true}
+      },
+      "episode": {
+        "episode_id": "E005",
+        "clinical_status": "CLINICIAN_RECORDED_OPEN",
+        "source_record_version": 1
+      },
+      "requirement": {
+        "follow_up_id": "F005",
+        "episode_id": "E005",
+        "state": "OPEN",
+        "approved_due_date": "2030-01-01",
+        "source_record_version": 2,
+        "source_records_current": true,
+        "instructions_consistent": true
+      },
+      "appointments": [],
+      "task": {
+        "contact_attempts": 0,
+        "next_permitted_contact_at": null,
+        "has_pending_approval": false,
+        "has_unresolved_escalation": false
+      }
+    },
+    {
+      "case_id": "conflicting_instructions",
+      "evaluated_at": "2030-01-15T12:00:00+08:00",
+      "patient": {
+        "patient_id": "P006",
+        "consent": {"channel": "sms", "granted": true, "expires_at": null},
+        "contact": {"channel": "sms", "is_valid": true}
+      },
+      "episode": {
+        "episode_id": "E006",
+        "clinical_status": "CLINICIAN_RECORDED_REVIEW_REQUIRED",
+        "source_record_version": 4
+      },
+      "requirement": {
+        "follow_up_id": "F006",
+        "episode_id": "E006",
+        "state": "OPEN",
+        "approved_due_date": "2030-01-01",
+        "source_record_version": 8,
+        "source_records_current": true,
+        "instructions_consistent": false
+      },
+      "appointments": [],
+      "task": {
+        "contact_attempts": 0,
+        "next_permitted_contact_at": null,
+        "has_pending_approval": false,
+        "has_unresolved_escalation": false
+      }
+    }
+  ]
+}
